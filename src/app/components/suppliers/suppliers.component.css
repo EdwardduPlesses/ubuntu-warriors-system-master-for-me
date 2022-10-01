@@ -1,0 +1,70 @@
+table {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background-color: #d3edea;
+}
+
+mat-paginator {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    background-color: #d3edea;
+}
+
+.search {
+    width: 20%;
+    margin-left: 3%;
+    margin-right: auto;
+}
+
+.title {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titleCard {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #009d9a;
+}
+
+.titleSub {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    background-color: #009d9a;
+}
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+    cursor: pointer;
+}
+
+.mat-row:hover .mat-cell {
+    background-color: #9faaa9;
+    color: black;
+}
+
+.tableContainer {
+    overflow: auto;
+}
+
+.mat-column-select {
+    overflow: initial;
+}
+
+.addButton {
+    float: right;
+    margin-top: 1.2%;
+    margin-bottom: 1%;
+}

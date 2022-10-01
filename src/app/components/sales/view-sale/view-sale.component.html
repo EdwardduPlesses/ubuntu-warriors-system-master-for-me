@@ -1,0 +1,50 @@
+<div class="container">
+    <h2 mat-dialog-title>Sale Details</h2>
+
+    <form class="mat-dialog-content" #formControl="ngForm" *ngFor="let sale of salesData">
+
+        <!-- Customer Name -->
+        <div class="form">
+            <mat-form-field>
+                <mat-label>Customer Name</mat-label>
+                <input matInput placeholder="Customer Name" value='{{sale.customerName}} {{sale.customerSurname}}'
+                    readonly>
+            </mat-form-field>
+        </div>
+
+        <!-- Sake Status -->
+        <div class="form">
+            <mat-form-field>
+                <mat-label>Sale Status</mat-label>
+                <input matInput placeholder="Sale Status" value="{{sale.saleStatusName}}" readonly>
+            </mat-form-field>
+        </div>
+
+        <!-- Sale Amount -->
+        <div class="form">
+            <mat-form-field>
+                <mat-label>Sale Amount</mat-label>
+                <input matInput placeholder="Sale Amount" value="{{sale.saleAmount|currency:'R'}}" readonly>
+            </mat-form-field>
+        </div>
+
+        <!-- Sale Date -->
+        <div class="form">
+            <mat-form-field>
+                <mat-label>Sale Date</mat-label>
+                <input matInput placeholder="Sale Date" value="{{sale.saleDate|date}}" readonly>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <!-- Products Ordered -->
+    <h2>Products Ordered</h2>
+    <ul>
+        <li *ngFor="let orderline of orderlines">{{ orderline.quantity }}x {{ orderline.product.productName }} for {{ orderline.product.productPrice | currency: 'R' }}</li>
+    </ul>
+
+    <!-- Actions -->
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="onNoClick()">Back</button>
+    </mat-dialog-actions>
+</div>

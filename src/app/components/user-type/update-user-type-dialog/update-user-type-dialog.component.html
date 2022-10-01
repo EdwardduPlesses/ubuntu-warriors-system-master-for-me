@@ -1,0 +1,21 @@
+<div class="container">
+    <h3 mat-dialog-title>Update User Type</h3>
+  
+    <form class="mat-dialog-content" [formGroup]="updateUserType">
+  
+      <div class="form">
+        <mat-form-field>
+          <input matInput #input  placeholder="Name" id="userTypeName" formControlName="userTypeName" required >
+        </mat-form-field>
+      </div>
+
+      <!--Textarea for demo purposes-->
+      
+  
+      <div mat-dialog-actions>
+        <button mat-raised-button class="updateType" color="primary" (click)="confirmUpdateType()">Add</button>
+        <button mat-raised-button (click)="onNoClick()" tabindex="-1" color="warn">Cancel</button>
+      </div>
+      <!-- [type]="submit" -->
+    </form>
+</div>

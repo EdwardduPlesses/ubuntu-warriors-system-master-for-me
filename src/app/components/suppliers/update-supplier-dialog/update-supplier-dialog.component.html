@@ -1,0 +1,44 @@
+<div class="container">
+    <h2 mat-dialog-title>Update Supplier</h2>
+
+    <form class="mat-dialog-content" [formGroup]="updateSupplier" *ngFor="let supplier of supplierData">
+
+        <!-- Supplier Name -->
+        <div class="form">
+            <mat-form-field>
+                <input matInput #inputstate  placeholder="Supplier Name"
+                    formControlName="supplierName" name="supplierName" required>
+            </mat-form-field>
+        </div>
+
+        <!-- Supplier Phone Number -->
+        <div class="form">
+            <mat-form-field>
+                <input matInput #inputstate  placeholder="Supplier Phone Number"
+                    formControlName="supplierPhoneNo" name="supplierPhoneNo" appPhoneMask required>
+            </mat-form-field>
+        </div>
+
+        <!-- Supplier Email -->
+        <div class="form">
+            <mat-form-field>
+                <input matInput #inputstate  placeholder="Supplier Email"
+                    formControlName="supplierEmail" name="supplierEmail" required>
+            </mat-form-field>
+        </div>
+
+        <!-- Supplier Address -->
+        <div class="form">
+            <mat-form-field>
+                <input matInput #search  placeholder="Supplier Address"
+                    formControlName="supplierAddress" name="supplierAddress" required>
+            </mat-form-field>
+        </div>
+    </form>
+
+    <!-- Actions -->
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" [disabled]="!updateSupplier.valid" (click)="confirmSupplierUpdate()">Update</button>
+        <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+    </mat-dialog-actions>
+</div>

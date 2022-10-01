@@ -1,0 +1,57 @@
+<div class="container">
+  <h2 mat-dialog-title>Update Inventory Item</h2>
+
+  <form class="mat-dialog-content" [formGroup]="updateInventoryItem" *ngFor="let inventory of inventoryData">
+
+    <!-- Inventory Status -->
+    <div class="form">
+      <mat-form-field>
+        <mat-label>Inventory Status</mat-label>
+        <mat-select formControlName="inventoryStatusId" required>
+          <mat-option *ngFor="let inventory of inventorystatus" [value]="inventory.inventoryStatusId">
+            {{inventory.inventoryStatusName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Inventory Name -->
+    <div class="form">
+      <mat-form-field>
+        <input matInput formControlName="inventoryName" placeholder="Inventory Name" value={{inventory.inventoryName}}
+          required>
+      </mat-form-field>
+    </div>
+
+    <!-- Inventory Description -->
+    <div class="form">
+      <mat-form-field>
+        <input matInput formControlName="inventoryDescription" placeholder="Inventory Description"
+          value={{inventory.inventoryDescription}} required>
+      </mat-form-field>
+    </div>
+
+    <!-- Inventory Quantity -->
+    <div class="form">
+      <mat-form-field>
+        <input matInput formControlName="inventoryQuantity" placeholder="Inventory Quantity"
+          value={{inventory.inventoryQuantity}} required>
+      </mat-form-field>
+    </div>
+
+    <!-- Inventory Price -->
+    <div class="form">
+      <mat-form-field>
+        <input matInput formControlName="inventoryPrice" placeholder="Inventory Price"
+          value={{inventory.inventoryPrice}} required>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <!-- Actions -->
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!updateInventoryItem.valid" [mat-dialog-close]="1"
+      (click)="confirmEditInventory()">Update</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  </mat-dialog-actions>
+</div>

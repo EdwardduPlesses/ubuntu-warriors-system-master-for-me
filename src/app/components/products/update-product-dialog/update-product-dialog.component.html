@@ -1,0 +1,48 @@
+<div class="container">
+    <h3 mat-dialog-title>Update Product</h3>
+  
+    <form class="mat-dialog-content" [formGroup]="updateProduct">
+  
+  
+      <!--Textarea for demo purposes-->
+      <div class="form">
+        <mat-form-field>
+          <input matInput   placeholder="Name" value="{{this.updateProduct.controls['productName'].value}}" formControlName="productName" required >
+        </mat-form-field>
+      </div>
+      <span *ngIf="updateProduct.controls['productName'].errors?.['required'] && updateProduct.controls['productName'].touched" style="color: red;">Please enter name</span>
+  
+      <!--Contains mat-hint for characters count and has maxLengt set-->
+      <!-- <div class="form">
+        <mat-form-field>
+          <input matInput   placeholder="Quantity"  id="productQuantity" formControlName="productQuantity" required >
+        </mat-form-field>
+      </div>
+      <span *ngIf="updateProduct.controls['productQuantity'].errors?.['required'] && updateProduct.controls['productQuantity'].touched" style="color: red;">Please enter Quantity</span>
+   -->
+      <div class="form">
+        <mat-form-field>
+          <input matInput placeholder="Price"  id="productPrice" formControlName="productPrice" required>
+        </mat-form-field>
+      </div>
+      <span *ngIf="updateProduct.controls['productPrice'].errors?.['required'] && updateProduct.controls['productPrice'].touched" style="color: red;">Please enter price</span>
+
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Product Type</mat-label>
+        <mat-select id="productType" [value]="'products'" formControlName="productType">
+          <mat-option *ngFor="let type of productTypes" [value]="type.productTypeName">
+            {{type.productTypeName}}
+          </mat-option>
+        </mat-select>
+        </mat-form-field>
+      </div>
+  
+    </form>
+    <mat-dialog-actions>
+        <button mat-raised-button color="primary" [disabled]="!updateProduct.valid" (click)="confirmUpdate()">Update</button>
+        <button mat-raised-button (click)="onNoClick()" tabindex="-1" color="warn">Cancel</button>
+    </mat-dialog-actions>
+      <!-- [type]="submit" -->
+  </div>
+  

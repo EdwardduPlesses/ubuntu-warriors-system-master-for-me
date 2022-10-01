@@ -1,0 +1,79 @@
+<mat-card class="titleCard">
+  <mat-card-title class="title">Supplier Orders</mat-card-title>
+</mat-card>
+<mat-card class="container">
+  <div class="inlineParent">
+    <mat-form-field class="inlineChild" appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search by name, surname or user type" #input>
+    </mat-form-field>
+    <button class="add inlineChild" matTooltip="Place Order" matTooltipPosition="left" mat-button matSuffix
+      (click)="addOrder()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+  <div style="overflow-x:auto;">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="supplierOrderID">
+        <th mat-header-cell *matHeaderCellDef> Order ID </th>
+        <td mat-cell *matCellDef="let order"> {{order.supplierOrderId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderAmount">
+        <th mat-header-cell *matHeaderCellDef> Order Amount </th>
+        <td mat-cell *matCellDef="let order"> {{order.orderAmount}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="supplierOrderStatus">
+        <th mat-header-cell *matHeaderCellDef> Status </th>
+        <td mat-cell *matCellDef="let order"> {{order.supplierOrderStatus.supplierOrderStatusName}} </td>
+      </ng-container>
+
+      <!-- <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td mat-cell *matCellDef="let order">
+              <button matTooltip="View Order" class="crudButtons viewIcon" matTooltipPosition="left" mat-button color="primary" (click)="viewOrder(order)"><mat-icon>remove_red_eye</mat-icon></button>
+              <button matTooltip="Update Order" class="crudButtons editIcon" mat-button color="accent" (click)="updateOrder(order)"><mat-icon>edit</mat-icon></button>
+              <button matTooltip="Cancel Order" class="crudButtons deleteIcon" matTooltipPosition="right"  mat-button color="warn" (click)="cancelledOrder(order)"><mat-icon>delete_outline</mat-icon></button>
+          </td>
+        </ng-container> -->
+
+      <!-- CRUD Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let order">
+
+          <button mat-icon-button [matMenuTriggerFor]="menu" (click)="onActionsClick()">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="updateOrder(order)">
+              <mat-icon>edit</mat-icon>
+              <span>Update Order Status</span>
+            </button>
+            <button mat-menu-item (click)="cancelOrder(order)">
+              <mat-icon>delete_outline</mat-icon>
+              <span>Cancel Order</span>
+            </button>
+            <button mat-menu-item (click)="viewOrder(order)">
+              <mat-icon>remove_red_eye</mat-icon>
+              <span>View Order</span>
+            </button>
+          </mat-menu>
+
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons class="mat-elevation-z8">
+    </mat-paginator>
+  </div>
+</mat-card>

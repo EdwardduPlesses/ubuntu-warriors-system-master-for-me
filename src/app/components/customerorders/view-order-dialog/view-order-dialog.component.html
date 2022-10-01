@@ -1,0 +1,56 @@
+<div class="container">
+    <h3 mat-dialog-title>View Order</h3>
+  
+    <form [formGroup]="viewOrder" class="mat-dialog-content">
+        <div class="form">
+            <mat-form-field>
+              <input matInput [readonly]="true" type="number" #input  placeholder="Order ID" id="orderId" formControlName="orderId">
+            </mat-form-field>
+          </div>
+
+          <div class="form">
+            <mat-form-field>
+              <input matInput [readonly]="true" #inputstate  placeholder="Customer Name" id="customerName" formControlName="customerName" required >
+            </mat-form-field>
+          </div>
+
+          <div class="form">
+            <mat-form-field>
+              <input matInput [readonly]="true" #inputstate  placeholder="Customer Surname" id="customerSurname" formControlName="customerSurname" required >
+            </mat-form-field>
+          </div>
+      <!--Textarea for demo purposes-->
+      <div class="form">
+        <mat-form-field>
+          <input matInput [readonly]="true" type="number" #input  placeholder="Order Amount" id="orderAmount" formControlName="orderAmount">
+        </mat-form-field>
+      </div>
+  
+      <!--Contains mat-hint for characters count and has maxLengt set-->
+      <div class="form">
+        <mat-form-field>
+          <input matInput [readonly]="true" #inputstate  placeholder="Order Date Placed" id="orderDatePlaced" formControlName="orderDatePlaced" required >
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <input matInput [readonly]="true" #inputstate  placeholder="Order Date Collected" id="orderDateCollected" formControlName="orderDateCollected" required >
+        </mat-form-field>
+      </div>
+
+      <div class="form">
+        <mat-form-field>
+          <input matInput [readonly]="true" #inputstate  placeholder="Order Status" id="orderStatus" formControlName="orderStatus" required >
+        </mat-form-field>
+      </div>
+<h2>Products Ordered</h2>
+<ul>
+  <li *ngFor="let orderline of orderlines">{{ orderline.quantity }}x {{ orderline.product.productName }} for {{ orderline.product.productPrice | currency: 'R' }}</li></ul>
+      <div mat-dialog-actions>
+        <button mat-raised-button (click)="onNoClick()" tabindex="-1" color="warn">Close</button>
+      </div>
+      <!-- [type]="submit" -->
+    </form>
+  </div>
+  

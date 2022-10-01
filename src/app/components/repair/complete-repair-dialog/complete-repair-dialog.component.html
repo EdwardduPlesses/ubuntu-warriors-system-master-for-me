@@ -1,0 +1,50 @@
+<div *ngFor="let repair of repairData">
+    <form mat-dialog-content>
+        <h1 mat-dialog-title>Are you sure this Repair is Complete?</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <tbody>
+                  <tr>
+                    <th scope="row">Repair</th>
+                    <td>{{repair.name}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Description</th>
+                    <td>{{repair.description}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Start Date</th>
+                    <td>{{repair.repairStartDate | date}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Deadline Date</th>
+                    <td>{{repair.repairDeadlineDate | date}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Customer</th>
+                    <td>{{repair.repairCustomer}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Rate</th>
+                    <td>{{repair.repairRateAmount}}</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">Hours worked</th>
+                    <td>{{repair.repairRateHours}}</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th scope="row">Total Cost</th>
+                        <td>{{repair.repairCost}}</td>
+                    </tr>
+                </tfoot>
+              </table>
+        </div>
+    </form>
+    <mat-dialog-actions>
+        <button mat-raised-button color="complete" [mat-dialog-close]="1"
+            (click)="completeRepair(repair)">Complete</button>
+        <button mat-raised-button class="cancelDelete" (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </mat-dialog-actions>
+</div>

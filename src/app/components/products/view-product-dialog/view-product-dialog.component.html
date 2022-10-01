@@ -1,0 +1,35 @@
+<div class="container">
+    <h3 mat-dialog-title>Product Details</h3>
+  
+    <form class="mat-dialog-content" #formControl="ngForm" *ngFor="let product of productInfo">
+  
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Product Name" value="{{product.productName}}" readonly>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Product Price" value="{{product.productPrice}}" readonly>
+        </mat-form-field>
+      </div>
+      <div class="form">
+        <mat-form-field>
+          <mat-label>Quantity</mat-label>
+          <input matInput placeholder="Product Quantity" value="{{product.productQuantity}}" readonly>
+        </mat-form-field>
+      </div>
+      <!-- <div class="form">
+        <mat-form-field>
+          <mat-label>Product Type</mat-label>
+          <input matInput placeholder="User Type" value="{{product.productType}}" readonly>
+        </mat-form-field>
+      </div> -->
+    </form>
+      <mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="back()">Back</button>
+      </mat-dialog-actions>
+      <!-- [type]="submit" -->
+    </div>

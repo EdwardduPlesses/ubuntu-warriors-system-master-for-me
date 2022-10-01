@@ -1,0 +1,18 @@
+<div class="container">
+    <h3 mat-dialog-title>Update Product Type</h3>
+  
+    <form class="mat-dialog-content"  [formGroup]="updateProductTypeControl">
+  
+      <div class="form">
+        <mat-form-field>
+          <input matInput #input  placeholder="Name" id="ProductTypeName" formControlName="productTypeName" required >
+        </mat-form-field>
+      </div>
+
+    </form>
+    <mat-dialog-actions>
+        <button mat-raised-button class="updateType" color="primary" (click)="confirmUpdateType()">Update</button>
+        <button mat-raised-button (click)="onNoClick()" tabindex="-1" color="warn">Cancel</button>
+    </mat-dialog-actions>
+</div>
+

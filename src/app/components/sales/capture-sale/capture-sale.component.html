@@ -1,0 +1,84 @@
+<div class="container">
+  <h3 mat-dialog-title>Capture New Sale</h3>
+
+  <form class="mat-dialog-content" autocomplete="off" [formGroup]="captureSale">
+
+    <!-- Customer Name -->
+    <div class="form">
+      <mat-form-field>
+        <mat-label>Customer Name</mat-label>
+        <mat-select formControlName="customerId">
+          <mat-option *ngFor="let customer of customers" [value]="customer.customerId">
+            {{customer.customerName}} {{customer.customerSurname}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Orderline -->
+    <mat-card class="products-card">
+      <mat-card-title>Products</mat-card-title>
+      <mat-card-content>
+        <form [formGroup]="addOrderLine" class="mat-dialog-content">
+          <div class="form">
+            <mat-form-field appearance="fill">
+              <mat-select formControlName="productId">
+                <mat-option *ngFor="let product of products" [value]="product.productId">
+                  {{product.productName}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form">
+            <mat-form-field>
+              <input matInput type="number" formControlName="quantity" #input placeholder="Quantity">
+            </mat-form-field>
+          </div>
+        </form>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions>
+        <button mat-raised-button color="accent" [disabled]="!addOrderLine.valid" (click)="saveOrderLine()">Add To Cart</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+
+
+
+
+
+
+
+    <!-- Sale Status -->
+    <div class="form">
+      <mat-form-field>
+        <mat-label>Sale Status</mat-label>
+        <mat-select formControlName="saleStatusId">
+          <mat-option *ngFor="let sale of salestatus" [value]="sale.saleStatusId">{{sale.saleStatusName}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <!-- Sale Amount -->
+    <div class="form">
+      <mat-form-field>
+        <input matInput #inputstate placeholder="Sale Amount" formControlName="saleAmount" name="saleAmount" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form">
+      <mat-form-field>
+        <input matInput type="date" max="today()" #inputstate placeholder="Sale Date" formControlName="saleDate"
+          name="saleDate" required>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <!-- Actions -->
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!captureSale.valid"
+      (click)="confirmCaptureSale()">Add</button>
+    <button mat-raised-button color="warn" (click)="onNoClick()">Cancel</button>
+  </mat-dialog-actions>
+</div>
