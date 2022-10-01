@@ -1,17 +1,17 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-let port = ""
-if(navigator.platform === "MacIntel"){
-  port =  "5001"
-}
-else if(navigator.platform === "Win32"){
-  port = "44354"
-}
+// let port = ""
+// if(navigator.platform === "MacIntel"){
+//   port =  "5001"
+// }
+// else if(navigator.platform === "Win32"){
+//   port = "44354"
+// }
 
 export const environment = {
   production: false,
-  API_URL: `https://localhost:${port}/api`
+  API_URL: `https://localhost:5001/api`
 };
 
 /*
