@@ -259,17 +259,17 @@ export class RepairComponent implements OnInit {
 
     if (this.optionClicked == false) {
 
-      for (let repair of this.repairs) {
-        var repairCard = document.getElementById(repair.repairId)!.style
-        repairCard.backgroundColor = "white"
-        repairCard.borderRadius = "4px"
-        repairCard.borderBottom = "solid 1px #ddd"
-        repairCard.color = ""
-        repairCard.boxShadow = "0 5px 5px -3px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05)"
+      // for (let repair of this.repairs) {
+      //   var repairCard = document.getElementById(repair.repairId)!.style
+      //   repairCard.backgroundColor = "white"
+      //   repairCard.borderRadius = "4px"
+      //   repairCard.borderBottom = "solid 1px #ddd"
+      //   repairCard.color = ""
+      //   repairCard.boxShadow = "0 5px 5px -3px rgba(0, 0, 0, 0.05), 0 3px 14px 2px rgba(0, 0, 0, 0.05)"
 
-        var repairCardText = document.getElementById(`text${repair.repairId}`)!.style
-        repairCardText.color = ""
-      }
+      //   var repairCardText = document.getElementById(`text${repair.repairId}`)!.style
+      //   repairCardText.color = ""
+      // }
     }
   }
 
