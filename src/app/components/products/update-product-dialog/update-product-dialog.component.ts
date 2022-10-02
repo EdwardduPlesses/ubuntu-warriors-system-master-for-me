@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ProductService } from 'src/app/services/product.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -16,7 +16,7 @@ const API_URL = environment.API_URL;
 export class UpdateProductDialogComponent implements OnInit {
   productInfo: any = [];
   productVM: any = []
-  updateProduct!: FormGroup;
+  updateProduct!: UntypedFormGroup;
   productTypes!: any[];
 
 
@@ -24,7 +24,7 @@ export class UpdateProductDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<UpdateProductDialogComponent>,
     public http: HttpClient,
     public snackBarService: SnackbarService,
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public productService: ProductService) { }
 
   async ngOnInit() {
@@ -33,11 +33,11 @@ export class UpdateProductDialogComponent implements OnInit {
     await this.getProductTypes();
     this.productInfo[0].productTypeName = this.productTypes.find(x => x.productTypeId === this.productInfo[0].productTypeId).productTypeName;
 
-    this.updateProduct = new FormGroup({
-      productName: new FormControl(this.productInfo[0].productName, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-      productQuantity: new FormControl(this.productInfo[0].productQuantity, [Validators.required, Validators.max(100000), Validators.maxLength(10)]),
-      productPrice: new FormControl(this.productInfo[0].productPrice, [Validators.required, Validators.max(100000), Validators.maxLength(10)]),
-      productType: new FormControl(this.productInfo[0].productTypeName, [Validators.required]),
+    this.updateProduct = new UntypedFormGroup({
+      productName: new UntypedFormControl(this.productInfo[0].productName, [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      productQuantity: new UntypedFormControl(this.productInfo[0].productQuantity, [Validators.required, Validators.max(100000), Validators.maxLength(10)]),
+      productPrice: new UntypedFormControl(this.productInfo[0].productPrice, [Validators.required, Validators.max(100000), Validators.maxLength(10)]),
+      productType: new UntypedFormControl(this.productInfo[0].productTypeName, [Validators.required]),
     });
     this.productService.clearData();
 

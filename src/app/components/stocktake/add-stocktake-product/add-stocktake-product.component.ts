@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,7 @@ const API_URL = environment.API_URL;
 })
 export class AddStocktakeProductComponent implements OnInit {
 
-  addStocktake!: FormGroup;
+  addStocktake!: UntypedFormGroup;
   productItem: any = []
 
   constructor(public dialogRef: MatDialogRef<AddStocktakeProductComponent>, public snackBarService: SnackbarService, public http: HttpClient) { }
@@ -21,10 +21,10 @@ export class AddStocktakeProductComponent implements OnInit {
   ngOnInit() {
     this.getProductItems()
 
-    this.addStocktake = new FormGroup({
-      stockTakeDate: new FormControl('', [Validators.required]),
-      stockTakeDesc: new FormControl('', [Validators.required]),
-      productID: new FormControl('', [Validators.required])
+    this.addStocktake = new UntypedFormGroup({
+      stockTakeDate: new UntypedFormControl('', [Validators.required]),
+      stockTakeDesc: new UntypedFormControl('', [Validators.required]),
+      productID: new UntypedFormControl('', [Validators.required])
     })
 }
 

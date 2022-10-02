@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -16,22 +16,22 @@ const API_URL = environment.API_URL + '/UserType';
 export class UpdateUserTypeDialogComponent implements OnInit {
   userTypeInfo: any = [];
   userTVM: any = [];
-  updateUserType!: FormGroup;
+  updateUserType!: UntypedFormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateUserTypeDialogComponent>,
     public userTypeInfoService: UserTypeInfoService,
     public http: HttpClient,
     public snackBarService: SnackbarService,
-    public fb: FormBuilder
+    public fb: UntypedFormBuilder
   ) { }
 
   ngOnInit() {
     this.userTypeInfo = this.userTypeInfoService.retrieveUserTypeInfo();
     this.userTypeInfoService.clearData();
 
-    this.updateUserType = new FormGroup({
-      userTypeName: new FormControl(`${this.userTypeInfo[0].name}`),
+    this.updateUserType = new UntypedFormGroup({
+      userTypeName: new UntypedFormControl(`${this.userTypeInfo[0].name}`),
     });
   }
 

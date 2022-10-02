@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/services/customer.service';
 import { RepairService } from 'src/app/services/repair.service';
@@ -19,7 +19,7 @@ export class UpdateRepairDialogComponent implements OnInit {
   repairData: any = [];
   customers: any = [];
   selectedCustomer: any = '';
-  updateRepairFormControl!: FormGroup;
+  updateRepairFormControl!: UntypedFormGroup;
 
   constructor(
     public dialogRef: MatDialogRef<AddRepairDialogComponent>,
@@ -38,15 +38,15 @@ export class UpdateRepairDialogComponent implements OnInit {
     //Clearing the dataServiceArray
     this.repairService.clearData();
 
-    this.updateRepairFormControl = new FormGroup({
-      repair_Name: new FormControl(`${this.repairData[0].name}`, [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
-      repair_Description: new FormControl(`${this.repairData[0].description}`, [Validators.required,Validators.minLength(2), Validators.maxLength(100)]),
-      repair_ID: new FormControl(`${this.repairData[0].repairID}`, [Validators.required,]),
-      repair_StartDate: new FormControl(`${this.repairData[0].repairStartDate}`,[Validators.required]),
-      repair_DeadlineDate: new FormControl(`${this.repairData[0].repairDeadlineDate}`,[Validators.required]),
-      repair_Customer: new FormControl(`${this.repairData[0].repairCustomerID}`, [Validators.required]),
-      repair_RateAmount: new FormControl(`${this.repairData[0].repairRateAmount}`, [Validators.required]),
-      repair_HoursWorked: new FormControl(`${this.repairData[0].repairRateHours}`, [Validators.required]),
+    this.updateRepairFormControl = new UntypedFormGroup({
+      repair_Name: new UntypedFormControl(`${this.repairData[0].name}`, [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
+      repair_Description: new UntypedFormControl(`${this.repairData[0].description}`, [Validators.required,Validators.minLength(2), Validators.maxLength(100)]),
+      repair_ID: new UntypedFormControl(`${this.repairData[0].repairID}`, [Validators.required,]),
+      repair_StartDate: new UntypedFormControl(`${this.repairData[0].repairStartDate}`,[Validators.required]),
+      repair_DeadlineDate: new UntypedFormControl(`${this.repairData[0].repairDeadlineDate}`,[Validators.required]),
+      repair_Customer: new UntypedFormControl(`${this.repairData[0].repairCustomerID}`, [Validators.required]),
+      repair_RateAmount: new UntypedFormControl(`${this.repairData[0].repairRateAmount}`, [Validators.required]),
+      repair_HoursWorked: new UntypedFormControl(`${this.repairData[0].repairRateHours}`, [Validators.required]),
     });
 
     //Default customer name

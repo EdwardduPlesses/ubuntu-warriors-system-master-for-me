@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -19,13 +19,13 @@ export class EditProducttypeDialogComponent implements OnInit {
 
   productTypeInfo: any = []
   productTVM: any = []
-  updateProductTypeControl!: FormGroup
+  updateProductTypeControl!: UntypedFormGroup
 
   constructor(public dialogRef: MatDialogRef<EditProducttypeDialogComponent>,
     public productTypeInfoService: ProductTypeInfoService,
     public http: HttpClient,
     public snackBarService: SnackbarService,
-    public fb: FormBuilder) { }
+    public fb: UntypedFormBuilder) { }
 
   ngOnInit(): void {
     //Get product from pass service
@@ -34,8 +34,8 @@ export class EditProducttypeDialogComponent implements OnInit {
     //Clear array from pass service
     this.productTypeInfoService.clearData();
 
-    this.updateProductTypeControl = new FormGroup({
-      productTypeName: new FormControl(`${this.productTypeInfo[0].name}`, Validators.required)
+    this.updateProductTypeControl = new UntypedFormGroup({
+      productTypeName: new UntypedFormControl(`${this.productTypeInfo[0].name}`, Validators.required)
     });
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 
@@ -16,7 +16,7 @@ import { SupplierOrderService } from 'src/app/services/supplier-orders.service';
 })
 export class ReceiveSupplierOrderDialogComponent implements OnInit {
 
-  updateOrder!: FormGroup;
+  updateOrder!: UntypedFormGroup;
   orderInfo: any = []
   name: any
   statusId: any
@@ -28,11 +28,11 @@ export class ReceiveSupplierOrderDialogComponent implements OnInit {
     this.orderInfo = this.supplierOrderService.retrieveOrderInfo();
       this.supplierOrderService.clearData();
       console.log(this.orderInfo);
-    this.updateOrder = new FormGroup({
-      orderAmount: new FormControl(`${this.orderInfo[0].amount}`, [Validators.required]),
-      supplierOrderDateReceived: new FormControl(`${this.orderInfo[0].supplierOrderDateReceived}`, [Validators.required]),
-      supplierOrderDatePlaced: new FormControl(`${this.orderInfo[0].supplierOrderDatePlaced}`, [Validators.required]),
-      supplierOrderStatus: new FormControl(`${this.orderInfo[0].supplierOrderStatus.supplierOrderStatusName}`, [Validators.required])
+    this.updateOrder = new UntypedFormGroup({
+      orderAmount: new UntypedFormControl(`${this.orderInfo[0].amount}`, [Validators.required]),
+      supplierOrderDateReceived: new UntypedFormControl(`${this.orderInfo[0].supplierOrderDateReceived}`, [Validators.required]),
+      supplierOrderDatePlaced: new UntypedFormControl(`${this.orderInfo[0].supplierOrderDatePlaced}`, [Validators.required]),
+      supplierOrderStatus: new UntypedFormControl(`${this.orderInfo[0].supplierOrderStatus.supplierOrderStatusName}`, [Validators.required])
     })
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { OrderInfoService } from '../../../services/order-info.service';
 import { environment } from 'src/environments/environment';
@@ -14,7 +14,7 @@ const API_URL = environment.API_URL;
   styleUrls: ['./view-order-dialog.component.css']
 })
 export class ViewOrderDialogComponent implements OnInit {
-  viewOrder!: FormGroup;
+  viewOrder!: UntypedFormGroup;
   orderInfo: any = []
   orderlines: any =[]
   name: any
@@ -27,14 +27,14 @@ export class ViewOrderDialogComponent implements OnInit {
       this.orderInfoService.clearData();
       this.getOrderLines()
 
-    this.viewOrder = new FormGroup({
-      orderId: new FormControl(`${this.orderInfo[0].id}`, [Validators.required]),
-      customerName: new FormControl(`${this.orderInfo[0].customer.customerName}`, [Validators.required]),
-      customerSurname: new FormControl(`${this.orderInfo[0].customer.customerSurname}`, [Validators.required]),
-      orderAmount: new FormControl(`${this.orderInfo[0].amount}`, [Validators.required]),
-      orderDateCollected: new FormControl(`${this.orderInfo[0].dateCollected}`, [Validators.required]),
-      orderDatePlaced: new FormControl(`${this.orderInfo[0].datePlaced}`, [Validators.required]),
-      orderStatus: new FormControl(`${this.orderInfo[0].orderStatus.customerOrderStatusName}`, [Validators.required])
+    this.viewOrder = new UntypedFormGroup({
+      orderId: new UntypedFormControl(`${this.orderInfo[0].id}`, [Validators.required]),
+      customerName: new UntypedFormControl(`${this.orderInfo[0].customer.customerName}`, [Validators.required]),
+      customerSurname: new UntypedFormControl(`${this.orderInfo[0].customer.customerSurname}`, [Validators.required]),
+      orderAmount: new UntypedFormControl(`${this.orderInfo[0].amount}`, [Validators.required]),
+      orderDateCollected: new UntypedFormControl(`${this.orderInfo[0].dateCollected}`, [Validators.required]),
+      orderDatePlaced: new UntypedFormControl(`${this.orderInfo[0].datePlaced}`, [Validators.required]),
+      orderStatus: new UntypedFormControl(`${this.orderInfo[0].orderStatus.customerOrderStatusName}`, [Validators.required])
     })
   }
   

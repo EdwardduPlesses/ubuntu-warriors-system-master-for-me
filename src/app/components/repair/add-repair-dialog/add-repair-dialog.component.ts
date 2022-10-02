@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/services/customer.service';
 import { RepairService } from 'src/app/services/repair.service';
@@ -22,12 +22,12 @@ export class AddRepairDialogComponent implements OnInit {
 
   constructor(public dialog: MatDialog, public dialogRef: MatDialogRef<AddRepairDialogComponent>, public http: HttpClient, public snackBarService: SnackbarService, public repairService: RepairService, public customerService: CustomerService) {     }
 
-    addRepairFormControl = new FormGroup({
-      repair_Name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
-      repair_Description: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
-      repair_Customer: new FormControl('', [Validators.required]),
-      repair_SelectedDate: new FormControl('', [Validators.required]),
-      repair_RateAmount: new FormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
+    addRepairFormControl = new UntypedFormGroup({
+      repair_Name: new UntypedFormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(40)]),
+      repair_Description: new UntypedFormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]),
+      repair_Customer: new UntypedFormControl('', [Validators.required]),
+      repair_SelectedDate: new UntypedFormControl('', [Validators.required]),
+      repair_RateAmount: new UntypedFormControl('', [Validators.required, Validators.pattern("^[0-9]*$")]),
     });
 
   async ngOnInit() {

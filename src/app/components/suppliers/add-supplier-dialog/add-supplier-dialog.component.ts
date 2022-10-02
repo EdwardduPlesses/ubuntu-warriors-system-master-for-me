@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { SupplierService } from 'src/app/services/supplier.service';
@@ -18,11 +18,11 @@ export class AddSupplierDialogComponent implements OnInit {
 
   suppliers: any = [];
 
-  addSupplier = new FormGroup({
-    supplierName: new FormControl(''),
-    supplierPhoneNo: new FormControl(''),
-    supplierEmail: new FormControl(''),
-    addressId: new FormControl(''),
+  addSupplier = new UntypedFormGroup({
+    supplierName: new UntypedFormControl(''),
+    supplierPhoneNo: new UntypedFormControl(''),
+    supplierEmail: new UntypedFormControl(''),
+    addressId: new UntypedFormControl(''),
   })
 
   @ViewChild('search')

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -15,8 +15,8 @@ const API_URL = environment.API_URL + "/ProductType";
 })
 export class AddProducttypeDialogComponent implements OnInit {
 
-  addProductTypeControl = new FormGroup({
-    ProductTypeName: new FormControl('', [Validators.required, Validators.minLength(2)] )
+  addProductTypeControl = new UntypedFormGroup({
+    ProductTypeName: new UntypedFormControl('', [Validators.required, Validators.minLength(2)] )
   });
 
   constructor(

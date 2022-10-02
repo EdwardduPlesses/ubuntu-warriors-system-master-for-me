@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {UntypedFormControl, UntypedFormGroup, Validators} from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UserInfoService } from '../../../services/user-info.service';
 import { environment } from 'src/environments/environment';
@@ -15,7 +15,7 @@ const API_URL = environment.API_URL;
 export class ViewUserDialogComponent implements OnInit {
 
   userInfo: any = [];
-  viewUser!: FormGroup
+  viewUser!: UntypedFormGroup
   userTypes: any = [];
   userTypeName: any
 
@@ -27,11 +27,11 @@ export class ViewUserDialogComponent implements OnInit {
 
     this.getUserType()
 
-    this.viewUser = new FormGroup({
-      usertype: new FormControl('', [Validators.required]),
-      username: new FormControl(`${this.userInfo[0].username}`, [Validators.required]),
-      email: new FormControl(`${this.userInfo[0].email}`, [Validators.required]),
-      phoneNo: new FormControl(`${this.userInfo[0].phoneNo}`, [Validators.required]),
+    this.viewUser = new UntypedFormGroup({
+      usertype: new UntypedFormControl('', [Validators.required]),
+      username: new UntypedFormControl(`${this.userInfo[0].username}`, [Validators.required]),
+      email: new UntypedFormControl(`${this.userInfo[0].email}`, [Validators.required]),
+      phoneNo: new UntypedFormControl(`${this.userInfo[0].phoneNo}`, [Validators.required]),
     })
     }
   

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { InventoryService } from '../../../services/inventory.service';
@@ -16,7 +16,7 @@ export class UpdateInventoryItemComponent implements OnInit {
   inventoryData: any = [];
   inventorystatus: any = [];
 
-  updateInventoryItem!: FormGroup;
+  updateInventoryItem!: UntypedFormGroup;
 
   constructor(public dialog: MatDialogRef<UpdateInventoryItemComponent>, private service: InventoryService, public http: HttpClient, public snackbar: SnackbarService) { }
 
@@ -42,13 +42,13 @@ export class UpdateInventoryItemComponent implements OnInit {
     this.inventoryData = this.service.retrieveInventoryData();
     this.service.clearData();
 
-    this.updateInventoryItem = new FormGroup({
-      inventoryId: new FormControl(this.inventoryData[0].inventoryId),
-      inventoryStatusId: new FormControl(`${this.inventoryData[0].inventoryStatusId}`, [Validators.required]),
-      inventoryName: new FormControl(`${this.inventoryData[0].inventoryName}`, [Validators.required]),
-      inventoryDescription: new FormControl(`${this.inventoryData[0].inventoryDescription}`, [Validators.required]),
-      inventoryQuantity: new FormControl(`${this.inventoryData[0].inventoryQuantity}`, [Validators.required]),
-      inventoryPrice: new FormControl(`${this.inventoryData[0].inventoryPrice}`, [Validators.required]),
+    this.updateInventoryItem = new UntypedFormGroup({
+      inventoryId: new UntypedFormControl(this.inventoryData[0].inventoryId),
+      inventoryStatusId: new UntypedFormControl(`${this.inventoryData[0].inventoryStatusId}`, [Validators.required]),
+      inventoryName: new UntypedFormControl(`${this.inventoryData[0].inventoryName}`, [Validators.required]),
+      inventoryDescription: new UntypedFormControl(`${this.inventoryData[0].inventoryDescription}`, [Validators.required]),
+      inventoryQuantity: new UntypedFormControl(`${this.inventoryData[0].inventoryQuantity}`, [Validators.required]),
+      inventoryPrice: new UntypedFormControl(`${this.inventoryData[0].inventoryPrice}`, [Validators.required]),
     });
 
     await this.getInventoryStatus();

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { SupplierService } from '../../../services/supplier.service';
@@ -18,7 +18,7 @@ export class UpdateSupplierDialogComponent implements OnInit {
 
   supplierData: any = [];
 
-  updateSupplier!: FormGroup;
+  updateSupplier!: UntypedFormGroup;
 
   @ViewChild('search')
   public searchElementRef!: ElementRef;
@@ -69,12 +69,12 @@ export class UpdateSupplierDialogComponent implements OnInit {
 
     console.log('Update', this.supplierData)
 
-    this.updateSupplier = new FormGroup({
-      supplierId: new FormControl(this.supplierData[0].supplierId),
-      supplierName: new FormControl(`${this.supplierData[0].supplierName}`, [Validators.required]),
-      supplierPhoneNo: new FormControl(`${this.supplierData[0].supplierPhoneNo}`, [Validators.required]),
-      supplierEmail: new FormControl(`${this.supplierData[0].supplierEmail}`, [Validators.required]),
-      supplierAddress: new FormControl(`${this.supplierData[0].addressId.streetNumber}, ${this.supplierData[0].addressId.streetName}`, [Validators.required]),
+    this.updateSupplier = new UntypedFormGroup({
+      supplierId: new UntypedFormControl(this.supplierData[0].supplierId),
+      supplierName: new UntypedFormControl(`${this.supplierData[0].supplierName}`, [Validators.required]),
+      supplierPhoneNo: new UntypedFormControl(`${this.supplierData[0].supplierPhoneNo}`, [Validators.required]),
+      supplierEmail: new UntypedFormControl(`${this.supplierData[0].supplierEmail}`, [Validators.required]),
+      supplierAddress: new UntypedFormControl(`${this.supplierData[0].addressId.streetNumber}, ${this.supplierData[0].addressId.streetName}`, [Validators.required]),
     })
   }
 

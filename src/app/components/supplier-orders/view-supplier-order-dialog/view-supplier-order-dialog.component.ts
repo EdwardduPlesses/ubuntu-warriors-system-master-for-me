@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SupplierOrderService } from 'src/app/services/supplier-orders.service';
 
@@ -10,7 +10,7 @@ import { SupplierOrderService } from 'src/app/services/supplier-orders.service';
   styleUrls: ['./view-supplier-order-dialog.component.css']
 })
 export class ViewSupplierOrderDialogComponent implements OnInit {
-  viewOrder!: FormGroup;
+  viewOrder!: UntypedFormGroup;
   orderInfo: any = []
   orderPlines: any =[]
   orderIlines: any =[]
@@ -28,13 +28,13 @@ export class ViewSupplierOrderDialogComponent implements OnInit {
        this.getOrderILines()     
 
 
-    this.viewOrder = new FormGroup({
-      orderId: new FormControl(`${this.orderInfo[0].id}`, [Validators.required]),
-      supplierName: new FormControl(`${this.orderInfo[0].supplier.supplierName}`, [Validators.required]),
-      orderAmount: new FormControl(`${this.orderInfo[0].amount}`, [Validators.required]),
-      supplierOrderDateReceived: new FormControl(`${this.orderInfo[0].supplierOrderDateReceived}`, [Validators.required]),
-      supplierOrderDatePlaced: new FormControl(`${this.orderInfo[0].supplierOrderDatePlaced}`, [Validators.required]),
-      supplierOrderStatus: new FormControl(`${this.orderInfo[0].supplierOrderStatus.supplierOrderStatusName}`, [Validators.required])
+    this.viewOrder = new UntypedFormGroup({
+      orderId: new UntypedFormControl(`${this.orderInfo[0].id}`, [Validators.required]),
+      supplierName: new UntypedFormControl(`${this.orderInfo[0].supplier.supplierName}`, [Validators.required]),
+      orderAmount: new UntypedFormControl(`${this.orderInfo[0].amount}`, [Validators.required]),
+      supplierOrderDateReceived: new UntypedFormControl(`${this.orderInfo[0].supplierOrderDateReceived}`, [Validators.required]),
+      supplierOrderDatePlaced: new UntypedFormControl(`${this.orderInfo[0].supplierOrderDatePlaced}`, [Validators.required]),
+      supplierOrderStatus: new UntypedFormControl(`${this.orderInfo[0].supplierOrderStatus.supplierOrderStatusName}`, [Validators.required])
     })
   }
   

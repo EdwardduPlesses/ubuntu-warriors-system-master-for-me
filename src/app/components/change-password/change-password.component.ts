@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,12 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./change-password.component.css']
 })
 export class ChangePasswordComponent implements OnInit {
-  changePasswordForm: FormGroup;
+  changePasswordForm: UntypedFormGroup;
   invalidChangePassword!: boolean;
   users: any = [];
 
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
      public router: Router,
       private http: HttpClient,
       private snackBar: MatSnackBar,

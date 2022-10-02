@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,7 @@ const API_URL = environment.API_URL;
   styleUrls: ['./add-stocktake.component.css']
 })
 export class AddStocktakeComponent implements OnInit {
-  addStocktake!: FormGroup;
+  addStocktake!: UntypedFormGroup;
   inventoryItem: any = []
 
   constructor(public dialogRef: MatDialogRef<AddStocktakeComponent>, public snackBarService: SnackbarService, public http: HttpClient) { }
@@ -21,10 +21,10 @@ export class AddStocktakeComponent implements OnInit {
   ngOnInit() {
     this.getInventoryItems()
 
-    this.addStocktake = new FormGroup({
-      stockTakeDate: new FormControl('', [Validators.required]),
-      stockTakeDesc: new FormControl('', [Validators.required]),
-      inventoryID: new FormControl('', [Validators.required])
+    this.addStocktake = new UntypedFormGroup({
+      stockTakeDate: new UntypedFormControl('', [Validators.required]),
+      stockTakeDesc: new UntypedFormControl('', [Validators.required]),
+      inventoryID: new UntypedFormControl('', [Validators.required])
     })
 }
 

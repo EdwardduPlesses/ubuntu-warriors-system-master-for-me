@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/services/customer.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -18,7 +18,7 @@ const options = {
 export class EditCustomerDialogComponent implements OnInit {
   customerData: any = [];
   selectedTitle !: string 
-  updateCustomerFormControl!: FormGroup
+  updateCustomerFormControl!: UntypedFormGroup
   titles: any = [];
 
   //Address VAR's
@@ -41,7 +41,7 @@ export class EditCustomerDialogComponent implements OnInit {
     public ngZone: NgZone
   ) {}
 
-  editCustomerFormControl = new FormControl('', [Validators.required]);
+  editCustomerFormControl = new UntypedFormControl('', [Validators.required]);
 
 
   async confirmUpdate() {
@@ -105,15 +105,15 @@ await this.customerService.UpdateCustomer(apiSendCustomer, customerID).then(() =
     //Clearing the dataServiceArray
     this.customerService.clearData();
 
-    this.updateCustomerFormControl = new FormGroup({
-      Customer_Name: new FormControl(`${this.customerData[0].name}`, [Validators.required]),
-      Customer_Surname: new FormControl(`${this.customerData[0].surname}`, [Validators.required]),
-      Title_ID: new FormControl(``, [Validators.required]),
-      Address_ID: new FormControl(`${this.customerData[0].address.streetNumber} ${this.customerData[0].address.streetName}`, [Validators.required]),
-      Customer_IDNumber: new FormControl(`${this.customerData[0].idNumber}`, [Validators.required]),
-      Customer_PhoneNo: new FormControl(`${this.customerData[0].phoneNo}`, [Validators.required]),
-      CustomerCompetencyType: new FormControl(`${this.customerData[0].competency}`, [Validators.required]),
-      Customer_Email: new FormControl(`${this.customerData[0].email}`, [Validators.required])
+    this.updateCustomerFormControl = new UntypedFormGroup({
+      Customer_Name: new UntypedFormControl(`${this.customerData[0].name}`, [Validators.required]),
+      Customer_Surname: new UntypedFormControl(`${this.customerData[0].surname}`, [Validators.required]),
+      Title_ID: new UntypedFormControl(``, [Validators.required]),
+      Address_ID: new UntypedFormControl(`${this.customerData[0].address.streetNumber} ${this.customerData[0].address.streetName}`, [Validators.required]),
+      Customer_IDNumber: new UntypedFormControl(`${this.customerData[0].idNumber}`, [Validators.required]),
+      Customer_PhoneNo: new UntypedFormControl(`${this.customerData[0].phoneNo}`, [Validators.required]),
+      CustomerCompetencyType: new UntypedFormControl(`${this.customerData[0].competency}`, [Validators.required]),
+      Customer_Email: new UntypedFormControl(`${this.customerData[0].email}`, [Validators.required])
     })
     //Default customer name
   this.updateCustomerFormControl

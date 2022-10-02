@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/services/customer.service';
 import { SalesService } from 'src/app/services/sales.service';
@@ -21,8 +21,8 @@ export class CaptureSaleComponent implements OnInit {
   orders: any = [];
   saleAmount: number = 0;
 
-  addOrderLine!: FormGroup;
-  captureSale!: FormGroup;
+  addOrderLine!: UntypedFormGroup;
+  captureSale!: UntypedFormGroup;
 
   constructor(public dialog: MatDialogRef<CaptureSaleComponent>, public http: HttpClient, public snackbar: SnackbarService, public saleService: SalesService, public customerService: CustomerService) { }
 
@@ -37,21 +37,21 @@ export class CaptureSaleComponent implements OnInit {
     let yourDate = new Date()
     let formatDate = yourDate.toISOString().split('T')[0]
 
-    this.captureSale = new FormGroup({
-      customerId: new FormControl('', [Validators.required]),
-      saleStatusId: new FormControl('', [Validators.required]),
-      saleAmount: new FormControl('', [Validators.required]),
-      saleDate: new FormControl('', [Validators.required]),
+    this.captureSale = new UntypedFormGroup({
+      customerId: new UntypedFormControl('', [Validators.required]),
+      saleStatusId: new UntypedFormControl('', [Validators.required]),
+      saleAmount: new UntypedFormControl('', [Validators.required]),
+      saleDate: new UntypedFormControl('', [Validators.required]),
     })
 
     this.captureSale.controls['saleDate'].setValue(formatDate)
 
 
 
-    this.addOrderLine = new FormGroup({
-      saleId: new FormControl('', [Validators.required]),
-      productId: new FormControl('', [Validators.required]),
-      quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+    this.addOrderLine = new UntypedFormGroup({
+      saleId: new UntypedFormControl('', [Validators.required]),
+      productId: new UntypedFormControl('', [Validators.required]),
+      quantity: new UntypedFormControl('', [Validators.required, Validators.min(1)]),
     })
   }
 

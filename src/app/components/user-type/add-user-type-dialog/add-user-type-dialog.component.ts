@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -13,8 +13,8 @@ const API_URL = environment.API_URL + "/UserType";
   styleUrls: ['./add-user-type-dialog.component.css']
 })
 export class AddUserTypeDialogComponent implements OnInit {
-  addNewType = new FormGroup({
-    userTypeName: new FormControl(''),
+  addNewType = new UntypedFormGroup({
+    userTypeName: new UntypedFormControl(''),
   })
 
   constructor(public dialogRef: MatDialogRef<AddUserTypeDialogComponent>, public http: HttpClient, public snackBarService: SnackbarService) { }

@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -15,12 +15,12 @@ export class AddInventoryItemComponent implements OnInit {
 
   inventorystatus: any = [];
 
-  addInventoryItem = new FormGroup({
-    inventoryStatusId: new FormControl(''),
-    inventoryName: new FormControl(''),
-    inventoryDescription: new FormControl(''),
-    inventoryQuantity: new FormControl(''),
-    inventoryPrice: new FormControl(''),
+  addInventoryItem = new UntypedFormGroup({
+    inventoryStatusId: new UntypedFormControl(''),
+    inventoryName: new UntypedFormControl(''),
+    inventoryDescription: new UntypedFormControl(''),
+    inventoryQuantity: new UntypedFormControl(''),
+    inventoryPrice: new UntypedFormControl(''),
   })
 
   constructor(public dialog: MatDialogRef<AddInventoryItemComponent>, public http: HttpClient, public service: InventoryService, public snackbar: SnackbarService) { }

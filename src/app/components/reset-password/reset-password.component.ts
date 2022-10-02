@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -9,11 +9,11 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-  resetPasswordForm: FormGroup;
+  resetPasswordForm: UntypedFormGroup;
 
   constructor(
     public authService: AuthService,
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     private snackBar: MatSnackBar
     ) {
       this.resetPasswordForm = this.fb.group({

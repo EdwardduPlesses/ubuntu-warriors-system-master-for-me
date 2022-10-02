@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -13,8 +13,8 @@ const API_URL = environment.API_URL;
   styleUrls: ['./add-vat-dialog.component.css']
 })
 export class AddVatDialogComponent implements OnInit {
-  addVatRateControl = new FormGroup({
-    rate: new FormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/\d{1,2}/)] )
+  addVatRateControl = new UntypedFormGroup({
+    rate: new UntypedFormControl('', [Validators.required, Validators.minLength(1), Validators.pattern(/\d{1,2}/)] )
   });
 
   constructor(

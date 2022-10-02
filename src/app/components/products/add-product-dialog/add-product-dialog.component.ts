@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
@@ -15,7 +15,7 @@ const API_URL = environment.API_URL;
   styleUrls: ['./add-product-dialog.component.css']
 })
 export class AddProductDialogComponent implements OnInit {
-  addProduct!: FormGroup;
+  addProduct!: UntypedFormGroup;
 
   productTypes!: any[];
   constructor(
@@ -27,11 +27,11 @@ export class AddProductDialogComponent implements OnInit {
 
   async ngOnInit(){
 
-    this.addProduct = new FormGroup({
-      productName: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
-      productPrice: new FormControl('', [Validators.required, Validators.max(100000),Validators.maxLength(10)]),
-      productQuantity: new FormControl('', [Validators.required, Validators.max(100000),Validators.maxLength(10)]),
-      productType: new FormControl('', [Validators.required]),
+    this.addProduct = new UntypedFormGroup({
+      productName: new UntypedFormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(50)]),
+      productPrice: new UntypedFormControl('', [Validators.required, Validators.max(100000),Validators.maxLength(10)]),
+      productQuantity: new UntypedFormControl('', [Validators.required, Validators.max(100000),Validators.maxLength(10)]),
+      productType: new UntypedFormControl('', [Validators.required]),
     })
     this.getProductTypes();
     console.log('types', this.productTypes);

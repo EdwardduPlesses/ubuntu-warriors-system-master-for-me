@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -13,13 +13,13 @@ import { VatService } from 'src/app/services/vat.service';
 })
 export class AddVatComponent implements OnInit {
 
-  addVatForm!: FormGroup;
+  addVatForm!: UntypedFormGroup;
 
   constructor(public dialogRef: MatDialogRef<AddVatComponent>, public http: HttpClient, private snackBar: MatSnackBar, public vatService: VatService) { }
 
   async ngOnInit() {
-    this.addVatForm = new FormGroup({
-      vatRate: new FormControl('', [Validators.required,Validators.maxLength(10),]),
+    this.addVatForm = new UntypedFormGroup({
+      vatRate: new UntypedFormControl('', [Validators.required,Validators.maxLength(10),]),
   });
 }
 

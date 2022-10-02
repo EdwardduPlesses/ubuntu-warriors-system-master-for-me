@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, ElementRef, NgZone, OnInit, ViewChild } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { GoogleMap } from '@angular/google-maps';
 import { MatDialogRef } from '@angular/material/dialog';
 import { CustomerService } from 'src/app/services/customer.service';
@@ -44,15 +44,15 @@ export class AddCustomerDialogComponent implements OnInit {
     public http: HttpClient,
     public snackBarService: SnackbarService, public customerService: CustomerService, public ngZone: NgZone) { }
 
-  public addCustomerFormControl = new FormGroup({
-    Customer_Name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(2), Validators.maxLength(36)]),
-    Customer_Surname: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(2), Validators.maxLength(36)]),
-    Title_ID: new FormControl('', [Validators.required]),
-    Address_ID: new FormControl('', [Validators.required]),
-    Customer_IDNumber: new FormControl('', [Validators.required, Validators.maxLength(13), Validators.minLength(13),Validators.pattern(/([0-9][0-9])(([0][1-9])|([1][0-2]))(([0-2][0-9])|([3][0-1]))([0-9]{4})([0-1])([0-9])([0-9])/)]),
-    Customer_PhoneNo: new FormControl('', [Validators.required, Validators.maxLength(14), Validators.minLength(14)]),
-    CustomerCompetencyType: new FormControl('', [Validators.required]),
-    Customer_Email: new FormControl('', [Validators.required, Validators.email, Validators.maxLength(40)])
+  public addCustomerFormControl = new UntypedFormGroup({
+    Customer_Name: new UntypedFormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(2), Validators.maxLength(36)]),
+    Customer_Surname: new UntypedFormControl('', [Validators.required, Validators.pattern('^[a-zA-Z ]*$'), Validators.minLength(2), Validators.maxLength(36)]),
+    Title_ID: new UntypedFormControl('', [Validators.required]),
+    Address_ID: new UntypedFormControl('', [Validators.required]),
+    Customer_IDNumber: new UntypedFormControl('', [Validators.required, Validators.maxLength(13), Validators.minLength(13),Validators.pattern(/([0-9][0-9])(([0][1-9])|([1][0-2]))(([0-2][0-9])|([3][0-1]))([0-9]{4})([0-1])([0-9])([0-9])/)]),
+    Customer_PhoneNo: new UntypedFormControl('', [Validators.required, Validators.maxLength(14), Validators.minLength(14)]),
+    CustomerCompetencyType: new UntypedFormControl('', [Validators.required]),
+    Customer_Email: new UntypedFormControl('', [Validators.required, Validators.email, Validators.maxLength(40)])
   });
 
 

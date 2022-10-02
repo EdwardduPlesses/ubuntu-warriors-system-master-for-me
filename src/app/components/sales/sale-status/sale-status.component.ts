@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SalesService } from 'src/app/services/sales.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -15,7 +15,7 @@ export class SaleStatusComponent implements OnInit {
   salesData: any = [];
   salestatus: any = [];
 
-  editSaleStatus!: FormGroup
+  editSaleStatus!: UntypedFormGroup
 
   constructor(public dialog: MatDialogRef<SaleStatusComponent>, public http: HttpClient, public service: SalesService, public snackbar: SnackbarService) { }
 
@@ -42,9 +42,9 @@ export class SaleStatusComponent implements OnInit {
     this.salesData = this.service.retrieveSaleData();
     this.service.clearData();
 
-    this.editSaleStatus = new FormGroup({
-      saleId: new FormControl(this.salesData[0].saleId),
-      saleStatusId: new FormControl(`${this.salesData[0].saleStatusId}`)
+    this.editSaleStatus = new UntypedFormGroup({
+      saleId: new UntypedFormControl(this.salesData[0].saleId),
+      saleStatusId: new UntypedFormControl(`${this.salesData[0].saleStatusId}`)
     })
 
     this.editSaleStatus.get('saleStatusId')?.setValue(this.salesData[0].saleStatusId)

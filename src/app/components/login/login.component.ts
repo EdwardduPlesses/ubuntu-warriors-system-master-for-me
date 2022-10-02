@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,12 +10,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit{
-  loginForm: FormGroup;
+  loginForm: UntypedFormGroup;
   invalidLogin!: boolean;
   users: any = [];
 
   constructor(
-    public fb: FormBuilder,
+    public fb: UntypedFormBuilder,
     public authService: AuthService,
     public router: Router,
     private http: HttpClient

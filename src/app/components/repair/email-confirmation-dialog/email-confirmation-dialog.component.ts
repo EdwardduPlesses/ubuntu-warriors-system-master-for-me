@@ -1,7 +1,7 @@
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { InventoryService } from 'src/app/services/inventory.service';
 import { RepairService } from 'src/app/services/repair.service';
@@ -35,7 +35,7 @@ export class EmailConfirmationDialogComponent implements OnInit {
   inventoryMax: number = 0
 
 
-  constructor(public dialogRef: MatDialogRef<EmailConfirmationDialogComponent>, public http: HttpClient, public repairService: RepairService, public inventoryService: InventoryService, private snackBarService: SnackbarService, private _formBuilder: FormBuilder) { }
+  constructor(public dialogRef: MatDialogRef<EmailConfirmationDialogComponent>, public http: HttpClient, public repairService: RepairService, public inventoryService: InventoryService, private snackBarService: SnackbarService, private _formBuilder: UntypedFormBuilder) { }
 
   async ngOnInit(): Promise<void> {
     //Getting Data from the PassDataService

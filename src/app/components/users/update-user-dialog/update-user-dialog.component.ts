@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import {UntypedFormControl, Validators, UntypedFormGroup, UntypedFormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -19,7 +19,7 @@ export class UpdateUserDialogComponent implements OnInit {
   userInfo: any = [];
   userVM: any = []
   usertypes: any = []
-  updateUser!: FormGroup
+  updateUser!: UntypedFormGroup
 
   userTypes: any = [];
   userTypeName: any
@@ -30,7 +30,7 @@ export class UpdateUserDialogComponent implements OnInit {
     public userInfoService: UserInfoService, 
     public http: HttpClient, 
     public snackBarService: SnackbarService,
-    public fb: FormBuilder) { }
+    public fb: UntypedFormBuilder) { }
 
   ngOnInit(){
       this.userInfo = this.userInfoService.retrieveUserInfo();
@@ -38,11 +38,11 @@ export class UpdateUserDialogComponent implements OnInit {
       console.log(this.userInfo)
 
       this.getUserTypes()
-      this.updateUser = new FormGroup({
-        userName: new FormControl(`${this.userInfo[0].username}`, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
-        email: new FormControl(`${this.userInfo[0].email}`, [Validators.required, Validators.email]),
-        phoneNumber: new FormControl(`${this.userInfo[0].phoneNo}`, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
-        userTypeID: new FormControl('', [Validators.required])
+      this.updateUser = new UntypedFormGroup({
+        userName: new UntypedFormControl(`${this.userInfo[0].username}`, [Validators.required, Validators.minLength(5), Validators.maxLength(30)]),
+        email: new UntypedFormControl(`${this.userInfo[0].email}`, [Validators.required, Validators.email]),
+        phoneNumber: new UntypedFormControl(`${this.userInfo[0].phoneNo}`, [Validators.required, Validators.minLength(10), Validators.maxLength(10)]),
+        userTypeID: new UntypedFormControl('', [Validators.required])
       })
   }
   onNoClick(): void {

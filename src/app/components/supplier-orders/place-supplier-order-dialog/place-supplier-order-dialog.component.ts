@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -14,9 +14,9 @@ import { SupplierOrderService } from 'src/app/services/supplier-orders.service';
   styleUrls: ['./place-supplier-order-dialog.component.css']
 })
 export class PlaceSupplierOrderDialogComponent implements OnInit {
-  addOrder!: FormGroup;
-  addOrderPLine!: FormGroup;
-  addOrderILine!: FormGroup;
+  addOrder!: UntypedFormGroup;
+  addOrderPLine!: UntypedFormGroup;
+  addOrderILine!: UntypedFormGroup;
   suppliers: any = [];
   products: any = [];
   inventories: any = [];
@@ -42,28 +42,28 @@ export class PlaceSupplierOrderDialogComponent implements OnInit {
     // console.log(this.suppliers);
     // console.log(this.suppliers);
 
-    this.addOrder = new FormGroup({
-      supplierId: new FormControl('', [Validators.required]),
-      supplierOrderStatusId: new FormControl(1, [Validators.required]),
-      orderAmount: new FormControl('', [Validators.required]),
-      supplierOrderDatePlaced: new FormControl('', [Validators.required]),
+    this.addOrder = new UntypedFormGroup({
+      supplierId: new UntypedFormControl('', [Validators.required]),
+      supplierOrderStatusId: new UntypedFormControl(1, [Validators.required]),
+      orderAmount: new UntypedFormControl('', [Validators.required]),
+      supplierOrderDatePlaced: new UntypedFormControl('', [Validators.required]),
       
     })
 
     //---------Product Order Line--------------//
 
-    this.addOrderPLine = new FormGroup({
-      supplierOrderId: new FormControl('', [Validators.required]),
-      productId: new FormControl('', [Validators.required]),
-      quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+    this.addOrderPLine = new UntypedFormGroup({
+      supplierOrderId: new UntypedFormControl('', [Validators.required]),
+      productId: new UntypedFormControl('', [Validators.required]),
+      quantity: new UntypedFormControl('', [Validators.required, Validators.min(1)]),
     })
 
     //---------Inventory Order Line--------------//
 
-    this.addOrderILine = new FormGroup({
-      supplierOrderId: new FormControl('', [Validators.required]),
-      inventoryId: new FormControl('', [Validators.required]),
-      quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+    this.addOrderILine = new UntypedFormGroup({
+      supplierOrderId: new UntypedFormControl('', [Validators.required]),
+      inventoryId: new UntypedFormControl('', [Validators.required]),
+      quantity: new UntypedFormControl('', [Validators.required, Validators.min(1)]),
     })
 
     this.addOrder.controls['supplierOrderDatePlaced'].setValue(formatDate)

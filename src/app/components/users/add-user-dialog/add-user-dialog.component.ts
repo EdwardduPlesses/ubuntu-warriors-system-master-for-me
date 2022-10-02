@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, Validators, FormGroup} from '@angular/forms';
+import {UntypedFormControl, Validators, UntypedFormGroup} from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
@@ -18,7 +18,7 @@ const API_URL = environment.API_URL;
   styleUrls: ['./add-user-dialog.component.css']
 })
 export class AddUserDialogComponent implements OnInit {
-  addUser!: FormGroup;
+  addUser!: UntypedFormGroup;
   usertypes: any = []
   constructor(
     public dialogRef: MatDialogRef<AddUserDialogComponent>, 
@@ -33,12 +33,12 @@ export class AddUserDialogComponent implements OnInit {
 
     this.getUserTypes()
 
-    this.addUser = new FormGroup({
-      userName: new FormControl('', [Validators.required,Validators.minLength(5), Validators.maxLength(30)]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl(`${retVal}`, [Validators.required]),
-      phoneNumber: new FormControl('', [Validators.required,  Validators.minLength(10), Validators.maxLength(10)]),
-      userTypeID: new FormControl('', [Validators.required])
+    this.addUser = new UntypedFormGroup({
+      userName: new UntypedFormControl('', [Validators.required,Validators.minLength(5), Validators.maxLength(30)]),
+      email: new UntypedFormControl('', [Validators.required, Validators.email]),
+      password: new UntypedFormControl(`${retVal}`, [Validators.required]),
+      phoneNumber: new UntypedFormControl('', [Validators.required,  Validators.minLength(10), Validators.maxLength(10)]),
+      userTypeID: new UntypedFormControl('', [Validators.required])
     })
   }
   onNoClick(): void {

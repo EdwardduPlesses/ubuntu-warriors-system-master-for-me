@@ -5,7 +5,7 @@ import {
 } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, HostListener, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { map, Observable, startWith } from 'rxjs';
 import { Board } from 'src/app/models/board.model';
@@ -39,12 +39,12 @@ export class RepairComponent implements OnInit {
   public toggleEdit: boolean = true;
   public disablePanel: boolean = false;
 
-  repair_Search = new FormControl('');
+  repair_Search = new UntypedFormControl('');
 
   constructor(public dialog: MatDialog, public http: HttpClient, public snackBarService: SnackbarService, public repairService: RepairService) {}
 
-  repairFormControl = new FormGroup({
-    repair_Name: new FormControl('', [
+  repairFormControl = new UntypedFormGroup({
+    repair_Name: new UntypedFormControl('', [
       Validators.required,
       Validators.minLength(2),
     ]),

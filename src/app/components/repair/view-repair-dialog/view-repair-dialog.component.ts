@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { lastValueFrom } from 'rxjs';
 import { RepairService } from 'src/app/services/repair.service';
@@ -30,8 +30,8 @@ export class ViewRepairDialogComponent implements OnInit {
     private repairService: RepairService
   ) {}
 
-  viewRepairFormControl = new FormGroup({
-    userRepair: new FormControl(`${this.userRepairValue}`),
+  viewRepairFormControl = new UntypedFormGroup({
+    userRepair: new UntypedFormControl(`${this.userRepairValue}`),
     });
 
   async ngOnInit() {

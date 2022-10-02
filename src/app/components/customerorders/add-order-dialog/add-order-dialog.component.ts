@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -13,8 +13,8 @@ import { CustomerOrderService } from 'src/app/services/customerOrder.service';
   styleUrls: ['./add-order-dialog.component.css']
 })
 export class AddOrderDialogComponent implements OnInit {
-  addOrder!: FormGroup;
-  addOrderLine!: FormGroup;
+  addOrder!: UntypedFormGroup;
+  addOrderLine!: UntypedFormGroup;
   customers: any = [];
   products: any = [];
   orderLines: any = [];
@@ -37,17 +37,17 @@ export class AddOrderDialogComponent implements OnInit {
     this.GetProducts();
     this.getLastOrder()
 
-    this.addOrder = new FormGroup({
-      customerId: new FormControl('', [Validators.required]),
-      customerOrderStatusId: new FormControl(1, [Validators.required]),
-      orderAmount: new FormControl('', [Validators.required]),
-      orderDatePlaced: new FormControl('', [Validators.required]),
+    this.addOrder = new UntypedFormGroup({
+      customerId: new UntypedFormControl('', [Validators.required]),
+      customerOrderStatusId: new UntypedFormControl(1, [Validators.required]),
+      orderAmount: new UntypedFormControl('', [Validators.required]),
+      orderDatePlaced: new UntypedFormControl('', [Validators.required]),
     })
 
-    this.addOrderLine = new FormGroup({
-      customerOrderId: new FormControl('', [Validators.required]),
-      productId: new FormControl('', [Validators.required]),
-      quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+    this.addOrderLine = new UntypedFormGroup({
+      customerOrderId: new UntypedFormControl('', [Validators.required]),
+      productId: new UntypedFormControl('', [Validators.required]),
+      quantity: new UntypedFormControl('', [Validators.required, Validators.min(1)]),
     })
 
     this.addOrder.controls['orderDatePlaced'].setValue(formatDate)

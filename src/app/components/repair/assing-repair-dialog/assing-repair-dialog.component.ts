@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormControl, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { RepairService } from 'src/app/services/repair.service';
 import { SnackbarService } from 'src/app/services/snackbar.service';
@@ -27,8 +27,8 @@ export class AssingRepairDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<AddRepairDialogComponent>, public http: HttpClient, public snackBarService: SnackbarService, public repairService: RepairService) { }
 
-  public assignRepairFormControl = new FormGroup({
-    repair_User: new FormControl('', [Validators.required])
+  public assignRepairFormControl = new UntypedFormGroup({
+    repair_User: new UntypedFormControl('', [Validators.required])
   });
 
   async ngOnInit() {

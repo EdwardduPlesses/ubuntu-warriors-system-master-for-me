@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { UntypedFormControl, Validators, UntypedFormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { SnackbarService } from 'src/app/services/snackbar.service';
 import { environment } from 'src/environments/environment';
@@ -13,7 +13,7 @@ const API_URL = environment.API_URL;
   styleUrls: ['./add-writeoff.component.css']
 })
 export class AddWriteoffComponent implements OnInit {
-  addWriteoff!: FormGroup;
+  addWriteoff!: UntypedFormGroup;
   inventoryItem: any = []
 
 
@@ -22,10 +22,10 @@ export class AddWriteoffComponent implements OnInit {
   ngOnInit() {
     this.getInventoryItems()
 
-    this.addWriteoff = new FormGroup({
-      writeOffDate: new FormControl('', [Validators.required]),
-      writeOffDesc: new FormControl('', [Validators.required]),
-      inventoryID: new FormControl('', [Validators.required])
+    this.addWriteoff = new UntypedFormGroup({
+      writeOffDate: new UntypedFormControl('', [Validators.required]),
+      writeOffDesc: new UntypedFormControl('', [Validators.required]),
+      inventoryID: new UntypedFormControl('', [Validators.required])
     })
   }
 
